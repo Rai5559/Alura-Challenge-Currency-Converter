@@ -8,11 +8,7 @@ public class Main {
         * Codes:
         *   ARS - Peso argentino
 
-            BOB - Boliviano boliviano
-
             BRL - Real brasileño
-
-            CLP - Peso chileno
 
             COP - Peso colombiano
 
