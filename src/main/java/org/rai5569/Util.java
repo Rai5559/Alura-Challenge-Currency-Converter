@@ -19,7 +19,8 @@ public class Util {
                 4) Real Brasileno -> Dolar
                 5) Dolar -> Peso Colombiano
                 6) Peso Colombioano -> Dolar
-                7) Salir
+                7) Historial de conversiones
+                8) Salir
                 
                 Elija una opcion valida:
                 *****************************************
