@@ -19,23 +19,8 @@ public class Main {
 
 
         while(true){
-            System.out.println("""
-                
-                *****************************************
-                Bienvenido al conversor de moneda.
-                
-                1) Dolar -> Peso Argentino
-                2) Peso Argentino -> Dolar
-                3) Dolar -> Real Brasileno
-                4) Real Brasileno -> Dolar
-                5) Dolar -> Peso Colombiano
-                6) Peso Colombioano -> Dolar
-                7) Salir
-                
-                Elija una opcion valida:
-                *****************************************
-                
-                """);
+
+            Util.printInterface();
 
             int userOption = sca.nextInt();
             if (userOption == 7) {
@@ -55,24 +40,24 @@ public class Main {
 
             try {
                 switch (userOption) {
-                    case 1 -> System.out.println("El resultado de convertir " + amount + " [USD] a pesos argentinos el dia de: "
-                            + exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc() + " es: " +
-                            (amount * exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("ARS")) + " [ARS]");
-                    case 2 -> System.out.println("El resultado de convertir " + amount + " [ARS] a dolares el dia de: "
-                            + exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc() + " es: " +
-                            (amount / exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("ARS")) + " [USD]");
-                    case 3 -> System.out.println("El resultado de convertir " + amount + " [USD] a reales brasileños el dia de: "
-                            + exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc() + " es: " +
-                            (amount * exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("BRL")) + " [BRL]");
-                    case 4 -> System.out.println("El resultado de convertir " + amount + " [BRL] a dolares el dia de: "
-                            + exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc() + " es: " +
-                            (amount / exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("BRL")) + " [USD]");
-                    case 5 -> System.out.println("El resultado de convertir " + amount + " [USD] a pesos colombianos el dia de: "
-                            + exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc() + " es: " +
-                            (amount * exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("COP")) + " [COP]");
-                    case 6 -> System.out.println("El resultado de convertir " + amount + " [COP] a dolares el dia de: "
-                            + exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc() + " es: " +
-                            (amount / exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("COP")) + " [USD]");
+                    case 1 -> Util.printConversionResult(amount, "USD", "ARS",
+                            exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("ARS"),
+                            exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc());
+                    case 2 -> Util.printConversionResult(amount, "ARS", "USD",
+                            exchangeRateReq.getCurrencyRequest("ARS").conversion_rates().get("USD"),
+                            exchangeRateReq.getCurrencyRequest("ARS").time_last_update_utc());
+                    case 3 -> Util.printConversionResult(amount, "USD", "BRL",
+                            exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("BRL"),
+                            exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc());
+                    case 4 -> Util.printConversionResult(amount, "BRL", "USD",
+                            exchangeRateReq.getCurrencyRequest("BRL").conversion_rates().get("USD"),
+                            exchangeRateReq.getCurrencyRequest("BRL").time_last_update_utc());
+                    case 5 -> Util.printConversionResult(amount, "USD", "COP",
+                            exchangeRateReq.getCurrencyRequest("USD").conversion_rates().get("COP"),
+                            exchangeRateReq.getCurrencyRequest("USD").time_last_update_utc());
+                    case 6 -> Util.printConversionResult(amount, "COP", "USD",
+                            exchangeRateReq.getCurrencyRequest("COP").conversion_rates().get("USD"),
+                            exchangeRateReq.getCurrencyRequest("COP").time_last_update_utc());
                     default -> System.out.println("Opcion no valida");
                 }
             } catch (Exception e) {
